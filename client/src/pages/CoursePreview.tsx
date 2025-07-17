@@ -25,7 +25,7 @@ export const CoursePreview: React.FC = () => {
     if (!course) {
       const fetchCourse = async () => {
         try {
-          const res = await axios.get(`https://tubecourse.onrender.comapi/courses/${courseId}`);
+          const res = await axios.get(`https://tubecourse.onrender.com/api/courses/${courseId}`);
           setCourse(res.data);
         } catch (err) {
           console.error("Fetch failed", err);

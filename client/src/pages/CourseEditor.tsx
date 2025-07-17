@@ -52,7 +52,7 @@ export const CourseEditor: React.FC = () => {
       updateCourse({ ...editedCourse });
 
       // 2. Save to MongoDB (backend persistence)
-      const res = await fetch(`http://localhost:5000/api/courses/${editedCourse.id}`, {
+      const res = await fetch(`https://tubecourse.onrender.comapi/courses/${editedCourse.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

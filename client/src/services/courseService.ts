@@ -1,7 +1,7 @@
 import { Course } from '../types/course';
 
 export const generateCourseFromPlaylist = async (playlistUrl: string): Promise<Course> => {
-  const response = await fetch('http://localhost:5000/api/process-playlist', {
+  const response = await fetch('https://tubecourse.onrender.comapi/process-playlist', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ export const generateCourseFromPlaylist = async (playlistUrl: string): Promise<C
 };
 
 export const saveCourseToDB = async (course: any) => {
-  const res = await fetch('http://localhost:5000/api/courses', {
+  const res = await fetch('https://tubecourse.onrender.comapi/courses', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(course),

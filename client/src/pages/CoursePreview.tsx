@@ -221,7 +221,7 @@ export const CoursePreview: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="flex space-x-3 items-center"> {/* Added items-center for alignment */}
+            <div className="flex space-x-3 items-center"> 
               <Link
                 to={`/editor/${course.id}`}
                 className="flex items-center space-x-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
@@ -308,7 +308,6 @@ export const CoursePreview: React.FC = () => {
           )}
         </div>
 
-        {/* Conditional Content Rendering */}
         {activeTab === 'modules' && (
           <div className="space-y-6 mb-8">
             <h2 className="text-2xl font-bold">Course Modules</h2>

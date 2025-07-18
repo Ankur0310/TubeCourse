@@ -15,18 +15,15 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl, title, onClo
   };
 
   const videoId = getYouTubeVideoId(videoUrl);
-  // Added modestbranding=1 and color=red to embed URL for YouTube branding consistency
   const embedUrl = videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&color=red` : '';
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 md:p-8">
       <div className="relative w-full max-w-5xl h-full max-h-[90vh] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden mx-auto">
-        {/* Header */}
         <div className="flex-shrink-0 flex items-center justify-between p-4 md:p-6 border-b border-gray-200 bg-white sticky top-0 z-10">
           <h3 className="text-lg md:text-xl font-semibold text-gray-900 truncate max-w-[80%]">{title}</h3>
           <button
             onClick={onClose}
-            // Updated close button hover color
             className="p-2 hover:bg-red-50 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-red-500"
             aria-label="Close video player"
           >
@@ -34,7 +31,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl, title, onClo
           </button>
         </div>
 
-        {/* Video Container - flex-1 min-h-0 ensures it grows but doesn't overflow */}
+       
         <div className="flex-1 min-h-0 flex flex-col justify-center items-center bg-black px-2 py-4 md:py-8 overflow-auto">
           <div className="w-full max-w-3xl h-full flex items-center justify-center">
             <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
@@ -61,11 +58,10 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl, title, onClo
           </div>
         </div>
 
-        {/* Controls/Info */}
+       
         <div className="flex-shrink-0 p-4 md:p-6 bg-gray-50 border-t border-gray-200 sticky bottom-0 z-10">
           <div className="flex items-center justify-between flex-wrap gap-2">
             <div className="flex items-center space-x-4">
-              {/* Updated "Now Playing" icon background and color */}
               <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
                 <Play className="w-5 h-5 text-red-600" />
               </div>

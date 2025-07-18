@@ -16,12 +16,10 @@ export function extractJSON(text) {
 
     let jsonCandidate = cleaned.slice(firstCurly, lastCurly + 1);
 
-    // ✅ Fix common case: truncated string values
-    // e.g., "question": "What is the differen...
+  
     jsonCandidate = jsonCandidate.replace(
       /"([^"]+)":\s*?"[^"\n\r]*?(?=[,\n\r}])/g,
       (match) => {
-        // Ensure it ends with a closing quote
         return match.endsWith('"') ? match : `${match}"`;
       }
     );

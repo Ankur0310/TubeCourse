@@ -1,10 +1,8 @@
-// routes/playlist.js
-
 import express from 'express';
-import { youtube } from '../config/youtubeAPI.js'; // Assuming these are correctly configured
-import { genAI } from '../config/genAI.js';       // Assuming these are correctly configured
-import { extractPlaylistId } from '../services/youtube.js'; // Assuming this is correctly configured
-import { getCourseGenerationPayload } from '../services/geminiPrompt.js'; // Updated import
+import { youtube } from '../config/youtubeAPI.js'; 
+import { genAI } from '../config/genAI.js';      
+import { extractPlaylistId } from '../services/youtube.js'; 
+import { getCourseGenerationPayload } from '../services/geminiPrompt.js'; 
 
 const router = express.Router();
 
@@ -16,11 +14,11 @@ router.post('/', async (req, res) => {
   if (!playlistId) return res.status(400).json({ error: 'Invalid playlist URL' });
 
   try {
-    console.log('📺 Fetching playlist videos for ID:', playlistId);
+    //console.log('📺 Fetching playlist videos for ID:', playlistId);
     const videosRes = await youtube.playlistItems.list({
       part: ['snippet'],
       playlistId,
-      maxResults: 50, // Adjust as needed
+      maxResults: 50, 
     });
 
     const videos = videosRes.data.items
@@ -36,17 +34,15 @@ router.post('/', async (req, res) => {
 
     // Get the prompt and the structured generation config
     const { prompt, generationConfig } = getCourseGenerationPayload(videos);
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro-latest' }); // Using -latest for best results
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro-latest' }); 
 
-    // 🧠 Single Gemini call: generate course content directly in JSON format
-    console.log('🧠 Generating course content with structured JSON output...');
     const result = await model.generateContent({
       contents: [{ role: "user", parts: [{ text: prompt }] }],
       generationConfig: generationConfig,
     });
 
     const jsonResponseText = await (await result.response).text();
-    console.log('🧾 Raw JSON response from Gemini:\n', jsonResponseText.slice(0, 500), '...');
+    //console.log('🧾 Raw JSON response from Gemini:\n', jsonResponseText.slice(0, 500), '...');
 
     // ✅ Parse the JSON directly
     let parsedCourseData;
@@ -70,7 +66,6 @@ router.post('/', async (req, res) => {
 
   } catch (err) {
     console.error('💥 Error processing playlist:', err);
-    // Differentiate between API errors and other errors
     if (err.response && err.response.status) {
       res.status(err.response.status).json({ error: `AI API Error: ${err.response.status} - ${err.message}` });
     } else {

@@ -11,7 +11,7 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, questionIn
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
 
-  console.log("Rendering QuizQuestion", question, questionIndex);
+  //console.log("Rendering QuizQuestion", question, questionIndex);
 
   if (!question || !Array.isArray(question.options)) {
     return (
@@ -30,8 +30,8 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, questionIn
   const isAnswerValid = !isNaN(correctAnswerIndex) && correctAnswerIndex >= 0 && correctAnswerIndex < question.options.length;
 
   return (
-    <div className="bg-white rounded-lg p-4 border border-gray-200"> {/* Changed main background and added border */}
-      <h5 className="font-medium text-gray-800 mb-3"> {/* Ensured text color */}
+    <div className="bg-white rounded-lg p-4 border border-gray-200"> 
+      <h5 className="font-medium text-gray-800 mb-3"> 
         {questionIndex + 1}. {question.question}
       </h5>
       <div className="space-y-2">
@@ -42,15 +42,14 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, questionIn
           let buttonClass = "w-full text-left p-3 rounded-lg border transition-all duration-200 ";
 
           if (!showResult) {
-            // Updated hover/default states
             buttonClass += "border-gray-200 hover:border-red-300 hover:bg-red-50 text-gray-700";
           } else {
             if (isCorrect) {
-              buttonClass += "border-green-300 bg-green-100 text-green-800"; // Keep green for correct
+              buttonClass += "border-green-300 bg-green-100 text-green-800"; 
             } else if (isSelected && !isCorrect) {
-              buttonClass += "border-red-300 bg-red-100 text-red-800"; // Keep red for incorrect
+              buttonClass += "border-red-300 bg-red-100 text-red-800"; 
             } else {
-              buttonClass += "border-gray-200 bg-gray-50 text-gray-600"; // Neutral for unselected
+              buttonClass += "border-gray-200 bg-gray-50 text-gray-600"; 
             }
           }
 
@@ -76,7 +75,7 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, questionIn
       </div>
 
       {showResult && isAnswerValid && (
-        <div className="mt-3 p-3 bg-gray-50 rounded-lg border border-gray-200"> {/* Updated feedback box background */}
+        <div className="mt-3 p-3 bg-gray-50 rounded-lg border border-gray-200"> 
           <p className="text-sm">
             {selectedAnswer === correctAnswerIndex ? (
               <span className="text-green-600 font-medium">✓ Correct!</span>

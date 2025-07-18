@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Eye, Save, Plus, Trash2, Edit3, ArrowUp, ArrowDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useCourseStore } from '../store/useCourseStore'; // Assuming Zustand store is correctly implemented
+import { useCourseStore } from '../store/useCourseStore'; 
 
 export const CourseEditor: React.FC = () => {
   const { courseId } = useParams();
@@ -13,12 +13,9 @@ export const CourseEditor: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [saveMessage, setSaveMessage] = useState('');
 
-  // Effect to set initial editedCourse when 'course' changes
   useEffect(() => {
     if (course) {
-      // Deep clone the course object to avoid direct mutation of Zustand state
       const safeCourse = structuredClone(course);
-      // Ensure nested arrays exist to prevent errors when adding new items
       safeCourse.modules = safeCourse.modules || [];
       safeCourse.modules.forEach((mod) => {
         mod.lessons = mod.lessons || [];
@@ -26,13 +23,11 @@ export const CourseEditor: React.FC = () => {
           les.quiz = les.quiz || [];
         });
       });
-      // Also ensure projects array exists
       safeCourse.projects = safeCourse.projects || [];
       setEditedCourse(safeCourse);
     }
   }, [course]);
 
-  // Handle case where course is not found or not yet loaded
   if (!course || !editedCourse) {
     return (
       <div className="min-h-screen pt-20 flex items-center justify-center">
@@ -304,7 +299,7 @@ export const CourseEditor: React.FC = () => {
 
                 <div className="space-y-4">
                   {editedCourse.modules.map((module, moduleIndex) => (
-                    <div key={moduleIndex} className="border border-gray-300 rounded-lg p-4 bg-gray-50"> {/* Updated border and background */}
+                    <div key={moduleIndex} className="border border-gray-300 rounded-lg p-4 bg-gray-50"> 
                       <div className="flex items-center justify-between mb-3">
                         <input
                           type="text"
@@ -363,7 +358,7 @@ export const CourseEditor: React.FC = () => {
                           </button>
                         </div>
                         {module.lessons.map((lesson, lessonIndex) => (
-                          <div key={lessonIndex} className="space-y-2 bg-white p-4 rounded border border-gray-200"> {/* Updated background and border */}
+                          <div key={lessonIndex} className="space-y-2 bg-white p-4 rounded border border-gray-200"> 
                             {/* Lesson Title */}
                             <label className="block text-sm font-medium text-gray-700 mb-1">Lesson Title</label>
                             <input
@@ -415,7 +410,7 @@ export const CourseEditor: React.FC = () => {
                             </div>
 
                             {/* Quizzes within Lesson */}
-                            <div className="mt-4 border-t border-gray-100 pt-4"> {/* Light border for separation */}
+                            <div className="mt-4 border-t border-gray-100 pt-4"> 
                               <div className="flex justify-between items-center mb-2">
                                 <h5 className="text-md font-semibold text-gray-700">Quizzes</h5>
                                 <button
@@ -428,7 +423,7 @@ export const CourseEditor: React.FC = () => {
                                 </button>
                               </div>
                               {lesson.quiz?.map((quiz, quizIndex) => (
-                                <div key={quizIndex} className="bg-gray-100 border border-gray-200 rounded p-3 space-y-2 mb-2"> {/* Updated background and border */}
+                                <div key={quizIndex} className="bg-gray-100 border border-gray-200 rounded p-3 space-y-2 mb-2"> 
                                   {/* Question */}
                                   <label className="block text-sm font-medium text-gray-700 mb-1">Question</label>
                                   <input

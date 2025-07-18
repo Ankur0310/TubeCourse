@@ -9,7 +9,7 @@ export interface Lesson {
   description: string;
   quiz?: QuizQuestion[];
   videoURL: string | null;
-  duration?: string; // Added duration as optional string
+  duration?: string; 
 }
 
 export interface Module {
@@ -21,12 +21,12 @@ export interface Module {
 export interface Project {
   title: string;
   description: string;
-  difficulty: "Beginner" | "Intermediate" | "Advanced"; // Specific enum for clarity
+  difficulty: "Beginner" | "Intermediate" | "Advanced"; 
   keySkillsCovered: string[];
   estimatedTime: string;
   milestones: string[];
   suggestedTools: string[];
-  bonusFeatures?: string[]; // Optional, as it might not always be generated
+  bonusFeatures?: string[]; 
 }
 
 export interface Course {

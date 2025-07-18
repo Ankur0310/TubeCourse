@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, ArrowRight } from 'lucide-react'; // Changed icons for waitlist CTA
+import { Mail, ArrowRight } from 'lucide-react'; 
 
 export const PricingPage: React.FC = () => {
-  // Removed the 'plans' array as pricing models are no longer displayed
 
   return (
     <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8">
@@ -27,7 +26,7 @@ export const PricingPage: React.FC = () => {
             Be the first to know when our premium features and pricing plans are launched. Get exclusive early bird offers and updates!
           </p>
           <Link
-            to="/contact" // Assuming you'll have a contact or waitlist signup page
+            to="/contact" 
             className="inline-flex items-center space-x-2 bg-gradient-to-r from-red-600 to-red-800 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
             <span>Join the Waitlist</span>

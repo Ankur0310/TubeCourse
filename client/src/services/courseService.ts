@@ -14,7 +14,7 @@ export const generateCourseFromPlaylist = async (playlistUrl: string): Promise<C
   }
 
   const resJson = await response.json();
-  console.log('API response:', resJson);
+  //console.log('API response:', resJson);
 
  
   const course: Course = {
@@ -25,7 +25,7 @@ export const generateCourseFromPlaylist = async (playlistUrl: string): Promise<C
     ...resJson.course, 
   };
 
-  console.log('Generated course:', course);
+  //console.log('Generated course:', course);
   return course;
 };
 

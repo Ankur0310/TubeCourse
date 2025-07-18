@@ -23,7 +23,6 @@ export const LessonCard: React.FC<LessonCardProps> = ({ lesson, lessonIndex }) =
           <div className="flex items-start space-x-3">
             <button
               onClick={handlePlayVideo}
-              // Updated Play button colors to red theme
               className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center hover:bg-red-200 transition-colors group"
             >
               <Play className="w-4 h-4 text-red-600 group-hover:scale-110 transition-transform" />
@@ -34,33 +33,20 @@ export const LessonCard: React.FC<LessonCardProps> = ({ lesson, lessonIndex }) =
                 onClick={handlePlayVideo}
                 className="text-left w-full group"
               >
-                {/* Updated lesson title hover color to red theme */}
                 <h4 className="font-semibold mb-2 group-hover:text-red-600 transition-colors">
                   {lesson.title}
                 </h4>
               </button>
 
-              {/* Assuming lesson.description is a string, not an array for summary points */}
+             
               {lesson.description && (
                 <p className="text-sm text-gray-700 mb-3">{lesson.description}</p>
               )}
 
-              {/* If lesson.summary is intended to be an array of points, uncomment and adjust: */}
-              {/*
-              <div className="space-y-1 text-sm text-gray-600 mb-3">
-                {(lesson?.summary ?? []).map((point, index) => (
-                  <div key={index} className="flex items-start space-x-2">
-                    <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0"></span> // Updated bullet point color
-                    <span>{point}</span>
-                  </div>
-                ))}
-              </div>
-              */}
-
+              
               {(lesson?.quiz?.length ?? 0) > 0 && (
                 <button
                   onClick={() => setShowQuiz(!showQuiz)}
-                  // Updated Quiz button colors to red theme
                   className="flex items-center space-x-2 text-sm text-red-600 hover:text-red-800 transition-colors"
                 >
                   <Brain className="w-4 h-4" />
